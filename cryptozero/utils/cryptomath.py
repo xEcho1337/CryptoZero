@@ -1,6 +1,10 @@
+import math
+from typing import Any
+
 import sympy.ntheory.modular
-from gmpy2 import is_prime, next_prime
-from sympy import factorint, integer_nthroot
+from gmpy2 import is_prime, next_prime, isqrt, gmpy2
+from sympy import factorint, integer_nthroot, n_order
+
 
 def egcd(a: int, b: int) -> tuple[int,int,int]:
     if b == 0:
@@ -51,3 +55,26 @@ def smooth_prime(starting: int, bits: int, unique=False) -> int:
         test = k * pm1 + 1
         if is_prime(test):
             return test
+
+def baby_step_giant_step(g: int, b: int, p: int, order: int) -> int | None:
+    m = math.isqrt(order)
+    if m * m < order:
+        m += 1
+
+    table = {}
+    value = 1
+
+    for j in range(m):
+        table[value] = j
+        value = (value * g) % p
+
+    factor = pow(g, -m, p)
+
+    y = b % p
+    for i in range(m):
+        j = table.get(y)
+        if j is not None:
+            return (i * m + j) % order
+        y = (y * factor) % p
+
+    return None

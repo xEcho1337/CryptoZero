@@ -1,6 +1,7 @@
 from sympy import factorint, n_order
 from sympy.ntheory.modular import crt
 from tqdm import tqdm
+from cryptozero.utils.cryptomath import baby_step_giant_step
 
 def pohlig_hellman(g: int, h: int, p: int):
     n = n_order(g, p)
@@ -21,10 +22,12 @@ def pohlig_hellman(g: int, h: int, p: int):
 
             t = pow((h * inv) % p, exp, p)
 
-            for d in range(q):
-                if pow(g_k, d, p) == t:
-                    x += d * (q ** k)
-                    break
+            d = baby_step_giant_step(g_k, t, p, q)
+
+            if d is None:
+                raise ValueError("log not found")
+
+            x += d * (q ** k)
 
         residues.append(x)
         moduli.append(q ** e)
