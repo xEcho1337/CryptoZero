@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cryptozero"
-version = "0.1.0"
+version = "0.2.0"
 authors = [ { name = "Ferris" }, { name = "xEcho1337" } ]
 description = "Helper library for Crypto CTFs"
 readme = "README.md"
