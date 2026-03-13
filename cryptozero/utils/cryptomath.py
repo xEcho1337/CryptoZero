@@ -1,5 +1,6 @@
+import sympy.ntheory.modular
 from gmpy2 import is_prime, next_prime
-from sympy import factorint
+from sympy import factorint, integer_nthroot
 
 def egcd(a: int, b: int) -> tuple[int,int,int]:
     if b == 0:
@@ -14,6 +15,12 @@ def gcd(a: int, b: int) -> int:
     while b:
         a, b = b, a % b
     return a
+
+def ithroot(a: int, b: int) -> int:
+    return integer_nthroot(a, b)
+
+def crt(moduli: list[int], residues: list[int]) -> tuple[int, int] | None:
+    return sympy.ntheory.modular.crt(moduli, residues)
 
 def compute_phi(factors: list[int]):
     # TODO: add support for repeated factors

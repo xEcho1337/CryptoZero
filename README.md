@@ -24,9 +24,10 @@ pip install . -e
 - [X] Various Encodings
 - [X] Shortcut for calculating phi
 - [X] Diffie-Hellman Cipher Implementation
+- [X] Hastad attack
+- [ ] Tonelli Shanks
+- [ ] mt19937 cracking utility
 - [ ] More RSA attacks
 - [ ] More Diffie-Hellman attacks
-- [ ] Hastad attack
-- [ ] Tonelli Shanks
 - [ ] Proper documentation
 - [ ] ECC
