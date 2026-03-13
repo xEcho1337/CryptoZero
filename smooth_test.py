@@ -1,11 +1,10 @@
 from sympy import factorint
-
-from utils.cryptomath import bsmooth
+from utils.cryptomath import smooth_prime
 
 if __name__ == '__main__':
     p = 7 # a small starting prime
     bits = 512 # we want a 512 bit bsmooth prime
-    smooth = bsmooth(p, bits)
+    smooth = smooth_prime(p, bits)
     print("Smooth:", smooth)
     print("Bits:", smooth.bit_length())
 

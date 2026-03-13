@@ -22,7 +22,7 @@ def compute_phi(factors: list[int]):
         x *= factor - 1
     return x
 
-def bsmooth(starting: int, bits: int) -> int:
+def smooth_prime(starting: int, bits: int) -> int:
     if not is_prime(starting):
         raise ValueError("Starting value is not prime")
 
