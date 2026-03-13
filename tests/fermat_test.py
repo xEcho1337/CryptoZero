@@ -1,8 +1,8 @@
 import random
 
 from Crypto.Util import number
-from rsa.attacks.fermat import fermat_attack
-from rsa.core import RSA
+from cryptozero.rsa.attacks.fermat import fermat_attack
+from cryptozero.rsa.core import RSA
 from cryptozero.utils.cryptomath import compute_phi
 
 def generate_weak_rsa(bit_length=1024, delta_bits=16, e=65537):
